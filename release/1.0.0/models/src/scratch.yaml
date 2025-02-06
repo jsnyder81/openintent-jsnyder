@@ -1,0 +1,48 @@
+    device_type:
+        type: object
+        required:
+            - name
+            - quantity
+        properties:
+            name:
+                type: string
+                description: Name of the device type
+            wifi_generation:
+                type: string
+                enum:
+                    - WIFI4
+                    - WIFI5
+                    - WIFI6
+                    - WIFI7
+            spatial_streams:
+                type: number
+                description: Number of spatial streams
+            max_bandwith:
+                type: number
+                description: Maximum channel bandwidth the client supports.
+            supported_bands:
+                type: array
+                items:
+                    ref: "#/definitions/frequency_bands"
+                minItems: 1
+            quantity:
+                type: number
+                description: number of devices
+    capacity_area:
+        required:
+            - area
+        properties:
+            area:
+                ref: "#/definitions/area"
+            devices:
+                type: array
+                items:
+                    $ref: "#/definitions/device_type"
+                minItems: 1
+    transformation:
+        description: >
+            Transformation is a set of transformations done to each floorplan in
+            order to align it into a global coordinate systems.
+            The transformations are apply to each coordinate
+        properties:
+            scale
