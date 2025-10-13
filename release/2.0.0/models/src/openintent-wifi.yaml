@@ -279,6 +279,11 @@ $defs:
         description: array of closet objects.
         items:
           $ref: "#/$defs/closet"
+      survey_paths:
+        type: array
+        description: list of survey paths.
+        items:
+          $ref: "#/$defs/survey_path"
   closet:
     type: object
     description: Representation of an equipment closet (IDF/MDF)
@@ -780,9 +785,6 @@ $defs:
   path_point:
     type: object
     properties:
-      floorplan_name:
-        type: string
-        description: Name of floorplan to which this path-point belongs.
       coordinate:
         $ref: "#/$defs/coordinate"
       timestamp:
