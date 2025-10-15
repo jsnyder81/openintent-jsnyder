@@ -921,6 +921,7 @@
       }
     },
     "path_point": {
+      "description": "A point to be used along a path with reference to the data structure.\n",
       "type": "object",
       "properties": {
         "coordinate": {
@@ -930,10 +931,19 @@
           "type": "number",
           "description": "Timestamp in Unix epoch format.  example shows nanosecond precision.\n",
           "example": 1665345722.1234567
+        },
+        "path_indicator": {
+          "type": "string",
+          "enum": [
+            "START",
+            "END"
+          ],
+          "description": "This indicates if the point is used to start a path segment, or end a path segment. Point type surveys should include both a START and a END with the same coordinate.  For middle points, this is not used.\n"
         }
       }
     },
     "survey_path": {
+      "description": "A series of path_points with a reference to a data uri.  For example, the surveyd data is included in a timestamped PCAP file. You can have multiple survey_path objects pointed at a single PCAP.\n",
       "type": "object",
       "properties": {
         "path_data_uri": {
@@ -941,13 +951,12 @@
           "description": "URI reference to path data. Not all URIs will be resolvable by all systems.",
           "format": "uri"
         },
-        "path_type": {
-          "type": {
-            "enum": [
-              "PCAP",
-              "OTHER"
-            ]
-          }
+        "path_data_type": {
+          "type": "string",
+          "enum": [
+            "PCAP",
+            "OTHER"
+          ]
         },
         "survey_device_model": {
           "description": "path device model",
@@ -974,12 +983,21 @@
           "description": "software version of host device.",
           "example": "iOS 26.1"
         },
+        "path_type": {
+          "description": "To keep logic simple for implementers, we should specify if the points in this path are Point (stop and go) or a Continuous (line) type survey.\n",
+          "type": "string",
+          "enum": [
+            "POINT",
+            "CONTINUOUS"
+          ]
+        },
         "path_points": {
+          "description": "Each path in the path points must have a START and END point. There can be multiple paths within the path_points, but each must contain a START and END point.  These points are ordered from start to end.\n",
           "type": "array",
           "items": {
             "$ref": "#/$defs/path_point"
           },
-          "minItems": 1
+          "minItems": 2
         }
       }
     }
