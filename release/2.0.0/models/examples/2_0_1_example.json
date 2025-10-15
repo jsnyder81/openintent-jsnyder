@@ -141,6 +141,67 @@
                   "unit": "pixels"
                 }
               }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "START",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 2222.171542,
+                  "y": 3333.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "END",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 2222.171542,
+                  "y": 3333.253749,
+                  "unit": "pixels"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "path_data_uri": "file://surveys/floor1_survey.pcap",
+          "path_data_type": "PCAP",
+          "path_type": "CONTINUOUS",
+          "path_points": [
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "START",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 1540.171542,
+                  "y": 6063.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 999.171542,
+                  "y": 5206.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "END",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 234.171542,
+                  "y": 778.253749,
+                  "unit": "pixels"
+                }
+              }
             }
           ]
         }
