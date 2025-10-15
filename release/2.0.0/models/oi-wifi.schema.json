@@ -232,8 +232,7 @@
         },
         "ip_address": {
           "type": "string",
-          "description": "Management IP address of the switch",
-          "format": "ipv4"
+          "description": "Management IP address of the switch"
         },
         "closet_name": {
           "type": "string",

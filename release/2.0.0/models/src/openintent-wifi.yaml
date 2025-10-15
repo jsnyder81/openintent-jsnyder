@@ -183,7 +183,7 @@ $defs:
       ip_address:
         type: string
         description: Management IP address of the switch
-        format: ipv4
+        # format: ipv4
       closet_name:
         type: string
         description: Name or identifier of the closet (Intermediate Distribution Frame) room/closet where this switch is located
