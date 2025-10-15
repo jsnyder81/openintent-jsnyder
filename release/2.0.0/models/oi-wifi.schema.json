@@ -359,6 +359,13 @@
           "items": {
             "$ref": "#/$defs/closet"
           }
+        },
+        "survey_paths": {
+          "type": "array",
+          "description": "list of survey paths.",
+          "items": {
+            "$ref": "#/$defs/survey_path"
+          }
         }
       }
     },
@@ -916,10 +923,6 @@
     "path_point": {
       "type": "object",
       "properties": {
-        "floorplan_name": {
-          "type": "string",
-          "description": "Name of floorplan to which this path-point belongs."
-        },
         "coordinate": {
           "$ref": "#/$defs/coordinate"
         },
