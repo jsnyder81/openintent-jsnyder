@@ -68,6 +68,10 @@
           "type": "string",
           "description": "Name of floorplan to which this access-point belongs."
         },
+        "building_name": {
+          "type": "string",
+          "description": "Name of the building with which to look for floorplan_name"
+        },
         "asset_tag": {
           "type": "string",
           "description": "Assigned asset tag"

@@ -54,6 +54,9 @@ $defs:
       floorplan_name:
         type: string
         description: Name of floorplan to which this access-point belongs.
+      building_name:
+        type: string
+        description: Name of the building with which to look for floorplan_name
       asset_tag:
         type: string
         description: Assigned asset tag
@@ -223,9 +226,6 @@ $defs:
         type: string
         description: URI where to retrieve the map. Not all URIs will be resolvable by all systems.
         format: uri
-      building_name:
-        type: string
-        description: Name of the building with which to look for floorplan_name
       project_name:
         type: string
         description: Name of the project/file
