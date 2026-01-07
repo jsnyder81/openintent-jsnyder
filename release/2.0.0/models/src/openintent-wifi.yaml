@@ -142,6 +142,7 @@ $defs:
           lat_long coordinate systems. This allows all objects to
           share multi-coordinate systems.
         type: array
+        minItems: 1
         items:
           $ref: "#/$defs/coordinate"
       display_color:
@@ -181,13 +182,14 @@ $defs:
       ip_address:
         type: string
         description: Management IP address of the switch
-        # format: ipv4
+        format: ipv4
       closet_name:
         type: string
         description: Name or identifier of the closet (Intermediate Distribution Frame) room/closet where this switch is located
       coordinates:
         description: Array of coordinate objects which contain both xyz and lat_long coordinate systems.
         type: array
+        minItems: 1
         items:
           $ref: "#/$defs/coordinate"
       display_color:
@@ -199,16 +201,19 @@ $defs:
         description: >
           Unique identifier of the switch.
       copper_port_count:
-        type: number
+        type: integer
+        minimum: 0
         description: number of RJ-45 copper ports.
       modular_port_count:
-        type: number
+        type: integer
+        minimum: 0
         description: number of modular ports (SFP/SFP+/SFP28/QSFP)
       poe_budget:
         type: number
         description: total available power in watts.
       rack_units:
-        type: number
+        type: integer
+        minimum: 0
         description: number of rack units (RU) required for the device.
   floorplan:
     type: object
@@ -273,7 +278,6 @@ $defs:
           $ref: "#/$defs/hole_in_floor"
       closets:
         type: array
-        # TODO: Implement closet
         description: array of closet objects.
         items:
           $ref: "#/$defs/closet"
@@ -295,6 +299,8 @@ $defs:
         type: string
         description: Vendor ID for the closet
       type:
+        type: string
+        description: Type of network equipment closet (IDF=Intermediate Distribution Frame, MDF=Main Distribution Frame)
         enum:
           - IDF
           - MDF
@@ -305,6 +311,7 @@ $defs:
           lat_long coordinate systems. This allows all objects to
           share multi-coordinate systems.
         type: array
+        minItems: 1
         items:
           $ref: "#/$defs/coordinate"
   dot11_radio:
@@ -550,6 +557,8 @@ $defs:
     properties:
       rotation:
         type: number
+        minimum: 0
+        maximum: 360
         description: >
           Describes the rotation of the device in degrees where 0 is up on
           the floorplan orientation. For omnidirectional APs, if looking
@@ -558,6 +567,8 @@ $defs:
           beamwidth should point in this direction. AKA yaw.
       tilt:
         type: number
+        minimum: -90
+        maximum: 90
         description: >
           Describes the tilt of the device in degrees. For integrated
           antenna APs or omnidirectional antenna, 0 describes the default
@@ -566,6 +577,8 @@ $defs:
           negative values pointing down. AKA pitch.
       roll:
         type: number
+        minimum: -180
+        maximum: 180
         description: >
           Describes the rotation of the device in axis of rotation/tilt.
           0 describes the devices default orientation. This will normally
@@ -619,11 +632,11 @@ $defs:
           Name of wall type. Can be standalone or match a wall_material defined in main oi-wifi
           Preference is to define a wall type instead of specifying each value for each wall type.
       start_point:
-        $ref: "#/$defs/wall_point"
         description: Starting point of the segment
-      end_point:
         $ref: "#/$defs/wall_point"
+      end_point:
         description: Ending point of the segment
+        $ref: "#/$defs/wall_point"
       display_color:
         type: string
         description: >
