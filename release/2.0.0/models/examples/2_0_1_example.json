@@ -1,0 +1,212 @@
+{
+  "accesspoints": [
+    {
+      "name": "Access Point 13",
+      "floorplan_name": "test_floorplan",
+      "manufacturer": "arista",
+      "model": "c360",
+      "connected_switch": {
+        "switch_name": "Switch 1 2",
+        "switch_id": "932e5016-f26e-47d6-bd34-764401daecae"
+      },
+      "dot11_radios": [
+        {
+          "id": 0,
+          "radio_function": "CLIENT_ACCESS",
+          "band": "FREQ_2.4GHZ",
+          "channel": 11,
+          "channel_width": "20_MHz",
+          "transmit_power": 6,
+          "mimo_chains": 4
+        },
+        {
+          "id": 1,
+          "radio_function": "CLIENT_ACCESS",
+          "band": "FREQ_5GHZ",
+          "channel": 100,
+          "channel_width": "40_MHz",
+          "transmit_power": 10,
+          "mimo_chains": 4
+        },
+        {
+          "id": 2,
+          "radio_function": "CLIENT_ACCESS",
+          "band": "FREQ_6GHZ",
+          "channel": 21,
+          "channel_width": "80_MHz",
+          "transmit_power": 12,
+          "mimo_chains": 4
+        }
+      ],
+      "antennas": [
+        {
+          "vendor": "Arista",
+          "model": "C-360",
+          "bands": [
+            {
+              "band": "FREQ_2.4GHZ"
+            },
+            {
+              "band": "FREQ_5GHZ"
+            },
+            {
+              "band": "FREQ_6GHZ"
+            }
+          ]
+        }
+      ],
+      "coordinates": [
+        {
+          "coordinate_xyz": {
+            "x": 1511.75,
+            "y": 5883,
+            "z": 773.391105,
+            "unit": "pixels"
+          }
+        },
+        {
+          "coordinate_xyz": {
+            "x": 4.886758,
+            "y": 19.016898,
+            "z": 2.5,
+            "unit": "meters"
+          }
+        },
+        {
+          "coordinate_xyz": {
+            "x": 16.032475,
+            "y": 62.39064,
+            "z": 8.202,
+            "unit": "feet"
+          }
+        }
+      ],
+      "display_color": "#4687f0"
+    }
+  ],
+  "floorplans": [
+    {
+      "name": "test_floorplan",
+      "map_uri": "file://images/TEST-Floorplan.png",
+      "project_name": "TEST",
+      "floor_id": "225d2838-2521-4b98-8180-6a2f663665dc",
+      "rotation": 0,
+      "dimensions": [
+        {
+          "length": 7696,
+          "width": 8000,
+          "height": 773.3911054002023,
+          "unit": "pixels"
+        },
+        {
+          "length": 24.87745186834543,
+          "width": 25.86013707728215,
+          "height": 2.5,
+          "unit": "meters"
+        },
+        {
+          "length": 81.6179440896677,
+          "width": 84.84193772314728,
+          "height": 8.202,
+          "unit": "feet"
+        }
+      ],
+      "reference_markers": [],
+      "coverage_areas": [],
+      "closets": [],
+      "survey_paths": [
+        {
+          "path_data_uri": "file://surveys/floor1_survey.pcap",
+          "path_data_type": "PCAP",
+          "path_type": "POINT",
+          "path_points": [
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "START",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 1540.171542,
+                  "y": 6063.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "END",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 1540.171542,
+                  "y": 6063.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "START",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 2222.171542,
+                  "y": 3333.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "END",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 2222.171542,
+                  "y": 3333.253749,
+                  "unit": "pixels"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "path_data_uri": "file://surveys/floor1_survey.pcap",
+          "path_data_type": "PCAP",
+          "path_type": "CONTINUOUS",
+          "path_points": [
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "START",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 1540.171542,
+                  "y": 6063.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 999.171542,
+                  "y": 5206.253749,
+                  "unit": "pixels"
+                }
+              }
+            },
+            {
+              "timestamp": 1665345722.1234567,
+              "path_indicator": "END",
+              "coordinate": {
+                "coordinate_xyz": {
+                  "x": 234.171542,
+                  "y": 778.253749,
+                  "unit": "pixels"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "openintent_version": "2.0.1"
+}
