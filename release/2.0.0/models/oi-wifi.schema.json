@@ -86,7 +86,7 @@
         },
         "mac_address": {
           "type": "string",
-          "description": "MAC Address of an access_point. Should be described in the format: 01:23:45:67:89:0a where is is 2 characters seperated by colons and letters are lower case.\n",
+          "description": "MAC Address of an access_point. Should be described in the format: 01:23:45:67:89:0a where it is 2 characters separated by colons and letters are lower case.\n",
           "pattern": "^([a-f0-9]{2}:){5}[a-f0-9]{2}$"
         },
         "manufacturer": {
@@ -230,8 +230,7 @@
         },
         "ip_address": {
           "type": "string",
-          "description": "Management IP address of the switch",
-          "format": "ipv4"
+          "description": "Management IP address of the switch"
         },
         "closet_name": {
           "type": "string",
@@ -251,7 +250,7 @@
         },
         "vendor_id": {
           "type": "string",
-          "description": "Unique idenfier of the switch.\n"
+          "description": "Unique identifier of the switch.\n"
         },
         "copper_port_count": {
           "type": "number",
@@ -356,6 +355,13 @@
           "description": "array of closet objects.",
           "items": {
             "$ref": "#/$defs/closet"
+          }
+        },
+        "survey_paths": {
+          "type": "array",
+          "description": "list of survey paths.",
+          "items": {
+            "$ref": "#/$defs/survey_path"
           }
         }
       }
@@ -469,7 +475,7 @@
           "type": "object",
           "properties": {
             "is_extended": {
-              "description": "Is the antenna extended with a rf extention cable?\n",
+              "description": "Is the antenna extended with an RF extension cable?\n",
               "type": "boolean"
             },
             "vendor": {
@@ -908,6 +914,87 @@
         "inverted": {
           "description": "Inverted hole-in-floor objects are used to describe a hole that is everywhere but the defined area. Example would be If you wanted to show a building, but wanted a hole in floor for to indicate that exterior to the building was a hole. When not present, assumption is the value is false.\n",
           "type": "boolean"
+        }
+      }
+    },
+    "path_point": {
+      "description": "A point to be used along a path with reference to the data structure.\n",
+      "type": "object",
+      "properties": {
+        "coordinate": {
+          "$ref": "#/$defs/coordinate"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Timestamp in Unix epoch format.  example shows nanosecond precision.\n",
+          "example": 1665345722.1234567
+        },
+        "path_indicator": {
+          "type": "string",
+          "enum": [
+            "START",
+            "END"
+          ],
+          "description": "This indicates if the point is used to start a path segment, or end a path segment. Point type surveys should include both a START and a END with the same coordinate.  For middle points, this is not used.\n"
+        }
+      }
+    },
+    "survey_path": {
+      "description": "A series of path_points with a reference to a data uri.  For example, the surveyd data is included in a timestamped PCAP file. You can have multiple survey_path objects pointed at a single PCAP.\n",
+      "type": "object",
+      "properties": {
+        "path_data_uri": {
+          "type": "string",
+          "description": "URI reference to path data. Not all URIs will be resolvable by all systems.",
+          "format": "uri"
+        },
+        "path_data_type": {
+          "type": "string",
+          "enum": [
+            "PCAP",
+            "OTHER"
+          ]
+        },
+        "survey_device_model": {
+          "description": "path device model",
+          "type": "string",
+          "example": "WLANPI-Go"
+        },
+        "survey_device_sw_version": {
+          "type": "string",
+          "description": "Sofware version of the survey device.",
+          "example": "1.0.0"
+        },
+        "survey_device_identifier": {
+          "type": "string",
+          "description": "Unique identifier of the survey device",
+          "example": "JoelWLANPI-aa:bb:cc"
+        },
+        "host_device_platform": {
+          "type": "string",
+          "description": "platform of the host device. For example, if using a survey tool like a WLAN-PI, this field would describe the controlling device (e.g., \"iPhone Pro Max 16\").\n",
+          "example": "iPhone Pro Max 16"
+        },
+        "host_device_sw_version": {
+          "type": "string",
+          "description": "software version of host device.",
+          "example": "iOS 26.1"
+        },
+        "path_type": {
+          "description": "To keep logic simple for implementers, we should specify if the points in this path are Point (stop and go) or a Continuous (line) type survey.\n",
+          "type": "string",
+          "enum": [
+            "POINT",
+            "CONTINUOUS"
+          ]
+        },
+        "path_points": {
+          "description": "Each path in the path points must have a START and END point. There can be multiple paths within the path_points, but each must contain a START and END point.  These points are ordered from start to end.\n",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/path_point"
+          },
+          "minItems": 2
         }
       }
     }
