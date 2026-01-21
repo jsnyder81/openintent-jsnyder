@@ -1,0 +1,93 @@
+---
+# Test case 1: Minimal building - only required field
+name: Minimal Building
+---
+# Test case 2: Building with international address (US)
+name: US Office Building
+vendor_id: bld-00000000-0000-0000-000000000002
+address:
+  address_lines:
+    - "123 Technology Drive"
+    - "Suite 400"
+  locality: San Jose
+  administrative_area: CA
+  postal_code: "95134"
+  country: US
+---
+# Test case 3: Building with international address (Japan)
+name: Tokyo Office
+vendor_id: bld-00000000-0000-0000-000000000003
+address:
+  address_lines:
+    - "1-2-3 Shibuya"
+    - "Shibuya Tower 15F"
+  locality: Shibuya-ku
+  administrative_area: Tokyo
+  postal_code: "150-0002"
+  country: JP
+coordinate:
+  coordinate_lat_long:
+    latitude: 35.6595
+    longitude: 139.7004
+---
+# Test case 4: Complete building with floors, transforms, and all features
+name: Corporate Headquarters
+vendor_id: bld-00000000-0000-0000-000000000004
+address:
+  address_lines:
+    - "456 Enterprise Blvd"
+  locality: Mountain View
+  administrative_area: CA
+  postal_code: "94043"
+  country: US
+coordinate:
+  coordinate_lat_long:
+    latitude: 37.3861
+    longitude: -122.0839
+floors:
+  - floorplan_name: floor_3
+    floor_level: 3
+    floor_label: "3rd Floor"
+    transform:
+      scale_x: 1.0
+      scale_y: 1.0
+      rotation: 0
+  - floorplan_name: floor_2
+    floor_level: 2
+    floor_label: "2nd Floor"
+    transform:
+      scale_x: 1.0
+      scale_y: 1.02
+      rotation: 15
+      x_offset:
+        value: 2.5
+        unit: meters
+      y_offset:
+        value: -1.0
+        unit: meters
+  - floorplan_name: floor_1
+    floor_level: 1
+    floor_label: "Ground Floor"
+    transform:
+      scale_x: 1.05
+      scale_y: 1.05
+      rotation: 0
+      x_offset:
+        value: 0
+        unit: meters
+      y_offset:
+        value: 0
+        unit: meters
+  - floorplan_name: basement
+    floor_level: -1
+    floor_label: "Basement"
+    transform:
+      scale_x: 0.98
+      scale_y: 0.98
+      rotation: 0
+      x_offset:
+        value: 1.0
+        unit: meters
+      y_offset:
+        value: 0.5
+        unit: meters
