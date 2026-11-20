@@ -99,7 +99,10 @@
           "open_below": true,
           "area_material": {
             "name": "Raised Access Floor Tile",
-            "attenuation_db_per_m": 15.0
+            "thickness_m": 0.05,
+            "rf_properties": {
+              "attenuation_per_m": 15.0
+            }
           },
           "display_color": "#059669",
           "area": {
