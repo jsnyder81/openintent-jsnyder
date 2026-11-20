@@ -52,28 +52,20 @@
         {
           "name": "main_stage",
           "label": "Main Stage",
-          "surface_type": "FLAT",
-          "sunken": false,
-          "elevation": {
-            "value": 1.0,
-            "unit": "meters"
-          },
           "open_below": false,
           "display_color": "#d97706",
           "area": {
             "coordinates": [
-              { "coordinate_xyz": { "x": 2.0, "y": 4.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 10.0, "y": 4.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 10.0, "y": 12.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 2.0, "y": 12.0, "unit": "meters" } }
+              { "coordinate_xyz": { "x": 2.0, "y": 4.0, "z": 1.0, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 10.0, "y": 4.0, "z": 1.0, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 10.0, "y": 12.0, "z": 1.0, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 2.0, "y": 12.0, "z": 1.0, "unit": "meters" } }
             ]
           }
         },
         {
           "name": "stage_ramp",
           "label": "Stage Access Ramp",
-          "surface_type": "SLOPED",
-          "sunken": false,
           "display_color": "#2563eb",
           "area": {
             "coordinates": [
@@ -87,11 +79,6 @@
         {
           "name": "data_hall_raised_floor",
           "label": "Data Hall Raised Access Floor",
-          "surface_type": "FLAT",
-          "elevation": {
-            "value": 0.6,
-            "unit": "meters"
-          },
           "thickness": {
             "value": 0.05,
             "unit": "meters"
@@ -107,30 +94,24 @@
           "display_color": "#059669",
           "area": {
             "coordinates": [
-              { "coordinate_xyz": { "x": 12.0, "y": 8.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 28.0, "y": 8.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 28.0, "y": 20.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 12.0, "y": 20.0, "unit": "meters" } }
+              { "coordinate_xyz": { "x": 12.0, "y": 8.0, "z": 0.6, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 28.0, "y": 8.0, "z": 0.6, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 28.0, "y": 20.0, "z": 0.6, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 12.0, "y": 20.0, "z": 0.6, "unit": "meters" } }
             ]
           }
         },
         {
           "name": "sunken_lounge",
           "label": "Sunken Seating Pit",
-          "surface_type": "FLAT",
-          "sunken": true,
-          "elevation": {
-            "value": -0.45,
-            "unit": "meters"
-          },
           "open_below": false,
           "display_color": "#7c3aed",
           "area": {
             "coordinates": [
-              { "coordinate_xyz": { "x": 20.0, "y": 2.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 26.0, "y": 2.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 26.0, "y": 6.0, "unit": "meters" } },
-              { "coordinate_xyz": { "x": 20.0, "y": 6.0, "unit": "meters" } }
+              { "coordinate_xyz": { "x": 20.0, "y": 2.0, "z": -0.45, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 26.0, "y": 2.0, "z": -0.45, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 26.0, "y": 6.0, "z": -0.45, "unit": "meters" } },
+              { "coordinate_xyz": { "x": 20.0, "y": 6.0, "z": -0.45, "unit": "meters" } }
             ]
           }
         }

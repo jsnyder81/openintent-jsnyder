@@ -773,7 +773,7 @@ $defs:
       An area is defined as a polygon with an ordered list of coordinates, where
       the polygon is implicitly closed between the last and first coordinates.
       z on vertices is ignored except where a containing object defines it
-      (see elevated_area SLOPED).
+      (see elevated_area).
     required:
       - coordinates
     properties:
@@ -828,12 +828,16 @@ $defs:
     description: >
       A walkable surface on a floorplan whose height differs from the floor
       datum (z = 0), such as a stage, raised access floor, mezzanine deck,
-      platform, sunken pit, ramp, or raked seating. Heights are measured from
-      the floorplan floor datum (z = 0), consistent with coordinate_xyz.z.
+      platform, sunken pit, ramp, or raked seating. The surface height comes
+      from the z values of the vertices in area; a vertex without z is treated
+      as z = 0. When all vertices share the same z the surface is horizontal
+      (flat); when z varies between vertices the surface is sloped. Negative z
+      denotes below-datum (sunken) surfaces. Heights are measured from the
+      floorplan floor datum (z = 0), consistent with coordinate_xyz.z.
       Ceiling height belongs to the floorplan (dimension.height); clear height
-      above a raised surface is derived as dimension.height - elevation.
-      Behavior of overlapping elevated_areas (including over a hole_in_floor)
-      is implementation-defined.
+      above a raised surface is derived as dimension.height minus the surface
+      z. Behavior of overlapping elevated_areas (including over a
+      hole_in_floor) is implementation-defined.
     required:
       - name
       - area
@@ -847,39 +851,14 @@ $defs:
       label:
         type: string
         description: Human-readable label (e.g. "Main Stage", "Loading Ramp").
-      surface_type:
-        type: string
-        description: >
-          FLAT surfaces are horizontal at elevation. SLOPED surfaces take their
-          height from the z value of every vertex in area. When omitted, the
-          default is FLAT.
-        enum:
-          - FLAT
-          - SLOPED
-        default: FLAT
-      sunken:
-        type: boolean
-        description: >
-          Explicit marker for below-datum surfaces (e.g. sunken pits or
-          recessed lounges). When true, the surface lies below the floorplan
-          datum (z = 0); for FLAT surfaces elevation is typically negative, and
-          for SLOPED surfaces below-datum vertices carry negative z values.
-          When omitted, defaults to false.
-        default: false
-      elevation:
-        description: >
-          Height of a FLAT surface relative to the floorplan floor datum
-          (z = 0). Required when surface_type is FLAT; ignored for SLOPED.
-          When unit is pixels, pixel heights scale via the floorplan dimension
-          (same scaling as x and y).
-        $ref: "#/$defs/offset_value"
       area:
         description: >
-          Footprint of the surface. For SLOPED surfaces every vertex MUST carry
-          coordinate_xyz.z, all vertices SHOULD use the same unit (pixel heights
-          scale via the floorplan dimension), and the vertices MUST be coplanar
-          (within implementation tolerance). Model non-planar surfaces as
-          several adjacent elevated_areas.
+          Footprint and height profile of the surface. Each vertex MAY carry
+          coordinate_xyz.z; vertices without z are treated as z = 0. All
+          vertices SHOULD use the same unit (pixel heights scale via the
+          floorplan dimension). Sloped surfaces (vertices with differing z)
+          MUST be coplanar (within implementation tolerance). Model non-planar
+          surfaces as several adjacent elevated_areas.
         $ref: "#/$defs/area"
       area_material:
         description: >
@@ -899,28 +878,6 @@ $defs:
         type: string
         description: Hex color code for visualizing the elevated area. Has no inherent intent, but for visualization purposes.
         pattern: "^#[0-9A-Fa-f]{6}$"
-    allOf:
-      - if:
-          properties:
-            surface_type:
-              const: SLOPED
-          required:
-            - surface_type
-        then:
-          properties:
-            area:
-              properties:
-                coordinates:
-                  items:
-                    required:
-                      - coordinate_xyz
-                    properties:
-                      coordinate_xyz:
-                        required:
-                          - z
-        else:
-          required:
-            - elevation
 
   path_point:
     description: >
