@@ -2,7 +2,12 @@ name: Validate Model Schema Equivalence
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   validate-model-schema:
